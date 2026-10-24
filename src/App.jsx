@@ -1,9 +1,38 @@
-import React from 'react'
+import React from 'react';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import StatCard from './components/StatCard';
+import { statsData } from './data/mockData';
 
-const App = () => {
+function App() {
   return (
-    <div>App</div>
-  )
+    <div className="flex min-h-screen bg-slate-50 font-sans">
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col">
+        <Navbar />
+        
+        {/* Dashboard Main View */}
+        <main className="p-6 space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-800">Dashboard Overview</h2>
+            <p className="text-slate-500 text-sm">Welcome back! Here is what's happening today.</p>
+          </div>
+
+          {/* Metric Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {statsData.map((item) => (
+              <StatCard key={item.id} item={item} />
+            ))}
+          </div>
+
+          {/* পরবর্তী ধাপে আমরা এখানে Recharts দিয়ে Interactive Charts বসাবো */}
+        </main>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
