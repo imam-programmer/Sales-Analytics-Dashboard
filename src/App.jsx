@@ -8,7 +8,7 @@ import { statsData } from './data/mockData';
 
 function App() {
   return (
-    <div className="flex min-h-screen bg-slate-50 font-sans">
+    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950 font-sans transition-colors">
       {/* Sidebar */}
       <Sidebar />
 
@@ -19,8 +19,8 @@ function App() {
         {/* Dashboard Main View */}
         <main className="p-6 space-y-6">
           <div>
-            <h2 className="text-2xl font-bold text-slate-800">Dashboard Overview</h2>
-            <p className="text-slate-500 text-sm">Welcome back! Here is what's happening today.</p>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Dashboard Overview</h2>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Welcome back! Here is what's happening today.</p>
           </div>
 
           {/* Metric Cards Grid */}

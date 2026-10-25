@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+/* নতুন নিয়মে class-based dark mode এনাবল করার কোড */
+@variant dark (&:where(.dark, .dark *));
