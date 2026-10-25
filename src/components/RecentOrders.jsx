@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { recentOrdersData } from '../data/mockData';
+import { IoSearchOutline } from "react-icons/io5";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 const RecentOrders = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Completed':
@@ -16,18 +20,38 @@ const RecentOrders = () => {
     }
   };
 
+  const filteredOrders = recentOrdersData.filter((order) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      order.customer.toLowerCase().includes(query) ||
+      order.id.toLowerCase().includes(query) ||
+      order.product.toLowerCase().includes(query)
+    );
+  });
+
   return (
     <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200/85 dark:border-slate-800 shadow-sm transition-colors">
-      <div className="flex items-center justify-between mb-6">
+      {/* Header & Search Bar Section */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
           <h3 className="text-lg font-bold text-slate-800 dark:text-white">Recent Orders</h3>
           <p className="text-xs text-slate-400 dark:text-slate-500">Latest transactions from your store</p>
         </div>
-        <button className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 cursor-pointer">
-          View All
-        </button>
+
+        {/* Live Search Input */}
+        <div className="relative w-full sm:w-64">
+          <IoSearchOutline className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+          <input 
+            type="text" 
+            placeholder="Search customer, ID..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-9 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all border border-transparent dark:border-slate-700"
+          />
+        </div>
       </div>
 
+      {/* Responsive Table Container */}
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -41,24 +65,32 @@ const RecentOrders = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60 text-sm">
-            {recentOrdersData.map((order) => (
-              <tr key={order.id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/50 transition-colors">
-                <td className="py-4 px-4 font-semibold text-slate-700 dark:text-slate-300">{order.id}</td>
-                <td className="py-4 px-4 text-slate-600 dark:text-slate-400 font-medium">{order.customer}</td>
-                <td className="py-4 px-4 text-slate-500 dark:text-slate-400">{order.product}</td>
-                <td className="py-4 px-4 font-semibold text-slate-800 dark:text-slate-200">{order.amount}</td>
-                <td className="py-4 px-4">
-                  <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusBadge(order.status)}`}>
-                    {order.status}
-                  </span>
-                </td>
-                <td className="py-4 px-4 text-right">
-                  <button className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
-                    <FiMoreHorizontal className="w-5 h-5" />
-                  </button>
+            {filteredOrders.length > 0 ? (
+              filteredOrders.map((order) => (
+                <tr key={order.id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/50 transition-colors">
+                  <td className="py-4 px-4 font-semibold text-slate-700 dark:text-slate-300">{order.id}</td>
+                  <td className="py-4 px-4 text-slate-600 dark:text-slate-400 font-medium">{order.customer}</td>
+                  <td className="py-4 px-4 text-slate-500 dark:text-slate-400">{order.product}</td>
+                  <td className="py-4 px-4 font-semibold text-slate-800 dark:text-slate-200">{order.amount}</td>
+                  <td className="py-4 px-4">
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusBadge(order.status)}`}>
+                      {order.status}
+                    </span>
+                  </td>
+                  <td className="py-4 px-4 text-right">
+                    <button className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer">
+                      <FiMoreHorizontal className="w-5 h-5" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="py-8 text-center text-slate-400 dark:text-slate-500 text-sm">
+                  No matching orders found!
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

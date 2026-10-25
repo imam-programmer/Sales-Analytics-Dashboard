@@ -1,9 +1,4 @@
-// export const statsData = [
-//   { id: 1, title: 'Total Revenue', value: '$45,231.89', change: '+20.1%', isPositive: true },
-//   { id: 2, title: 'Subscriptions', value: '+2,350', change: '+180.1%', isPositive: true },
-//   { id: 3, title: 'Sales', value: '+12,234', change: '+19%', isPositive: true },
-//   { id: 4, title: 'Active Now', value: '+573', change: '-2.5%', isPositive: false },
-// ];
+
 
 export const chartData = [
   { name: 'Jan', revenue: 4000, sales: 2400 },
@@ -108,4 +103,11 @@ export const recentOrdersData = [
     status: 'Completed',
     date: '23 Oct 2026',
   },
+];
+
+export const trafficSourceData = [
+  { name: 'Search Engine', value: 4500, color: '#4f46e5' }, // Indigo
+  { name: 'Direct', value: 3000, color: '#06b6d4' },       // Cyan
+  { name: 'Social Media', value: 2200, color: '#10b981' },   // Emerald
+  { name: 'Referral', value: 1200, color: '#f59e0b' },      // Amber
 ];

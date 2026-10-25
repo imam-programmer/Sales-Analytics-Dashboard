@@ -6,7 +6,7 @@ import { GoSun } from "react-icons/go";
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // ডার্ক মোড টগল ফাংশন
+
   const toggleDarkMode = () => {
     if (isDarkMode) {
       document.documentElement.classList.remove('dark');
@@ -19,7 +19,6 @@ const Navbar = () => {
     }
   };
 
-  // পেজ লোডের সময় লোকাল স্টোরেজ থেকে স্টেট আনা
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {

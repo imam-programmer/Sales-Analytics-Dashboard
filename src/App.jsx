@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import StatCard from './components/StatCard';
 import RevenueChart from './components/RevenueChart';
+import TrafficChart from './components/TrafficChart'; // নতুন কম্পোনেন্ট इम्पोर्ट
 import RecentOrders from './components/RecentOrders';
 import { statsData } from './data/mockData';
 
@@ -30,9 +31,14 @@ function App() {
             ))}
           </div>
 
-          {/* Revenue Chart Section */}
-          <div className="grid grid-cols-1 gap-6">
-            <RevenueChart />
+          {/* Charts Section (Revenue Chart & Traffic Chart Side-by-Side on Large Screens) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2">
+              <RevenueChart />
+            </div>
+            <div className="lg:col-span-1">
+              <TrafficChart />
+            </div>
           </div>
 
           {/* Recent Orders Table Section */}
