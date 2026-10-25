@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import StatCard from './components/StatCard';
 import RevenueChart from './components/RevenueChart';
+import RecentOrders from './components/RecentOrders';
 import { statsData } from './data/mockData';
 
 function App() {
@@ -34,7 +35,10 @@ function App() {
             <RevenueChart />
           </div>
 
-          {/* পরবর্তী ধাপে আমরা Recent Orders Table যোগ করব */}
+          {/* Recent Orders Table Section */}
+          <div className="grid grid-cols-1 gap-6">
+            <RecentOrders />
+          </div>
         </main>
       </div>
     </div>
