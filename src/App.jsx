@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import StatCard from './components/StatCard';
+import RevenueChart from './components/RevenueChart';
 import { statsData } from './data/mockData';
 
 function App() {
@@ -28,7 +29,12 @@ function App() {
             ))}
           </div>
 
-          {/* পরবর্তী ধাপে আমরা এখানে Recharts দিয়ে Interactive Charts বসাবো */}
+          {/* Revenue Chart Section */}
+          <div className="grid grid-cols-1 gap-6">
+            <RevenueChart />
+          </div>
+
+          {/* পরবর্তী ধাপে আমরা Recent Orders Table যোগ করব */}
         </main>
       </div>
     </div>

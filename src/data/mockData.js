@@ -14,6 +14,7 @@ export const chartData = [
   { name: 'Jun', revenue: 3800, sales: 2390 },
 ];
 
+
 export const statsData = [
   {
     id: 1,
@@ -47,4 +48,19 @@ export const statsData = [
     isPositive: false,
     timeframe: 'since last hour',
   },
+];
+
+// নতুন চার্ট ডেটা যোগ করা হলো
+export const revenueChartData = [
+  { name: 'Jan', revenue: 4000, expenses: 2400 },
+  { name: 'Feb', revenue: 3000, expenses: 1398 },
+  { name: 'Mar', revenue: 9800, expenses: 2000 },
+  { name: 'Apr', revenue: 3908, expenses: 2780 },
+  { name: 'May', revenue: 4800, expenses: 1890 },
+  { name: 'Jun', revenue: 3800, expenses: 2390 },
+  { name: 'Jul', revenue: 4300, expenses: 3490 },
+   { name: 'Aug', revenue: 4000, expenses: 3490 },
+    { name: 'Sep', revenue: 3000, expenses: 3490 },
+     { name: 'Oct', revenue: 10000, expenses: 3490 },
+      { name: 'Nov', revenue: 5000, expenses: 3490 },
 ];
