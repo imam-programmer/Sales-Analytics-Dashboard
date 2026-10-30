@@ -3,7 +3,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import StatCard from './components/StatCard';
 import RevenueChart from './components/RevenueChart';
-import TrafficChart from './components/TrafficChart'; // নতুন কম্পোনেন্ট इम्पोर्ट
+import TrafficChart from './components/TrafficChart'; 
 import RecentOrders from './components/RecentOrders';
 import { statsData } from './data/mockData';
 
